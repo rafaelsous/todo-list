@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 
-import Logo from '../../assets/Logo.svg'
+import Logo from '../../assets/logo.svg'
 import { styles } from './styles'
 
 export function Header() {

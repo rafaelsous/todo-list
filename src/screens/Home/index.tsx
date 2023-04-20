@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, FlatList, Alert, Keyboard } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, FlatList, Keyboard } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
 import { Header } from '../../components/Header'
 import { Task } from '../../components/Task'
+import { EmptyList } from '../../components/EmptyList'
 
+import { THEME } from '../../theme'
 import { styles } from './styles'
 
 type TaskData = {
@@ -50,7 +52,7 @@ export function Home() {
         <TextInput
           style={styles.input}
           placeholder="Adicione uma nova tarefa"
-          placeholderTextColor="#808080"
+          placeholderTextColor={THEME.COLORS.GRAY_300}
           value={newTask}
           onChangeText={setNewTask}
           autoFocus
@@ -61,7 +63,7 @@ export function Home() {
           activeOpacity={0.7}
           onPress={handleTaskAdd}
         >
-          <Feather name="plus-circle" size={16} color="#F2F2F2" />
+          <Feather name="plus-circle" size={16} color={THEME.COLORS.GRAY_100} />
         </TouchableOpacity>
       </View>
 
@@ -76,9 +78,9 @@ export function Home() {
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <Text 
             style={{ 
-              fontSize: 14, 
-              color: '#4EA8DE', 
-              fontWeight: 'bold'
+              fontSize: THEME.FONT_SIZE.MD, 
+              color: THEME.COLORS.BLUE, 
+              fontFamily: THEME.FONT_FAMILY.BOLD,
             }}
           >
             Criadas
@@ -90,22 +92,23 @@ export function Home() {
               height: 24,
               textAlign: 'center',
               verticalAlign: 'middle',
-              fontSize: 12,
-              fontWeight: 'bold',
+              fontSize: THEME.FONT_SIZE.SM,
+              fontFamily: THEME.FONT_FAMILY.BOLD,
               borderRadius: 50,
-              color: '#D9D9D9',
-              backgroundColor: '#333333',
+              color: THEME.COLORS.GRAY_200,
+              backgroundColor: THEME.COLORS.GRAY_400,
             }}
           >
-            {tasks.length > 0 ? tasks.filter(task => task.isCompleted !== true).length : 0}
+            {tasks.length}
           </Text>
         </View>
 
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <Text style={{
-            fontSize: 14, 
-            color: '#8284FA', 
-            fontWeight: 'bold' }}
+            fontSize: THEME.FONT_SIZE.MD, 
+            color: THEME.COLORS.PURPLE, 
+            fontFamily: THEME.FONT_FAMILY.BOLD,
+          }}
           >
             Concluídas
           </Text>
@@ -116,11 +119,11 @@ export function Home() {
               height: 24,
               textAlign: 'center',
               verticalAlign: 'middle',
-              fontSize: 12,
-              fontWeight: 'bold',
+              fontSize: THEME.FONT_SIZE.SM,
+              fontFamily: THEME.FONT_FAMILY.BOLD,
               borderRadius: 50,
-              color: '#D9D9D9',
-              backgroundColor: '#333333',
+              color: THEME.COLORS.GRAY_200,
+              backgroundColor: THEME.COLORS.GRAY_400,
             }}
           >
             {tasks.length > 0 ? tasks.filter(task => task.isCompleted === true).length : 0}
@@ -146,7 +149,7 @@ export function Home() {
         }}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
-          <Text>Ainda não foi cadastrada nenhum tarefa</Text>
+          <EmptyList />
         }
       />
     </View>

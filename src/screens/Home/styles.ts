@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native'
 
+import { THEME } from '../../theme'
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: THEME.COLORS.GRAY_600,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -15,19 +17,19 @@ export const styles = StyleSheet.create({
   input: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#262626',
+    backgroundColor: THEME.COLORS.GRAY_500,
     borderWidth: 1,
-    borderColor: '#0D0D0D',
+    borderColor: THEME.COLORS.GRAY_700,
     borderRadius: 6,
-    fontSize: 16,
-    color: '#F2F2F2',
+    fontSize: THEME.FONT_SIZE.LG,
+    color: THEME.COLORS.GRAY_100,
   },
   button: {
     width: 60,
     height: 60,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1E6F9F',
+    backgroundColor: THEME.COLORS.BLUE_DARK,
     borderRadius: 6,
   },
   taskListContainer: {

@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
+import { THEME } from '../../theme'
 import { styles } from './styles'
 
 type TaskProps = {
@@ -21,7 +22,7 @@ export function Task({ description, isCompleted = false, onRemove, onChangeStatu
             activeOpacity={0.7}
             onPress={onChangeStatus}
           >
-            <Feather name="check-circle" size={24} color="#808080" />
+            <Feather name="check-circle" size={24} color={THEME.COLORS.GRAY_300} />
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -29,7 +30,7 @@ export function Task({ description, isCompleted = false, onRemove, onChangeStatu
             activeOpacity={0.7}
             onPress={onChangeStatus}
           >
-            <Feather name="circle" size={24} color="#808080" />
+            <Feather name="circle" size={24} color={THEME.COLORS.GRAY_300} />
           </TouchableOpacity>
         ) 
       }
@@ -47,7 +48,7 @@ export function Task({ description, isCompleted = false, onRemove, onChangeStatu
         activeOpacity={0.7}
         onPress={onRemove}
       >
-        <Feather name="trash-2" size={24} color="#808080" />
+        <Feather name="trash-2" size={24} color={THEME.COLORS.GRAY_300} />
       </TouchableOpacity>
     </View>
   )
